@@ -1,0 +1,19 @@
+import { Component, OnInit } from '@angular/core';
+import { EntryCollection } from 'contentful';
+import { Observable } from 'rxjs';
+import { ContentfulService } from '../services/contentful-service/contentful.service';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
+})
+export class HomeComponent implements OnInit {
+  constructor(private contentfulService: ContentfulService) {}
+
+  blogPosts$: Observable<EntryCollection<any>> | undefined;
+
+  ngOnInit(): void {
+    this.blogPosts$ = this.contentfulService.getEntries();
+  }
+}

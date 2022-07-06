@@ -1,0 +1,5 @@
+<div *ngIf="posts$ | async as posts">
+  <div *ngFor="let post of posts">{{ post.userId }}{{ post.body }}</div>
+</div>
+
+<button (click)="goBack()">go back</button>

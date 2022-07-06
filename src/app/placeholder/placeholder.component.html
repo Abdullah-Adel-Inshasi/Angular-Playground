@@ -1,0 +1,21 @@
+<label for="userId"></label>
+<input
+  type="number"
+  name="userId"
+  id="userId"
+  #userId
+  (input)="search(userId.value)"
+/>
+
+<input [(ngModel)]="text" />
+<div>{{ text | currency }}</div>
+
+<div *ngIf="posts$ | async">
+  <div
+    *ngFor="let post of posts$ | async"
+    (click)="gotoIdUser(post.id)"
+    [class.selected]="isActiveRoute(post.id)"
+  >
+    {{ post.id }}{{ post.username }}
+  </div>
+</div>
